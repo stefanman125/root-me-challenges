@@ -2,14 +2,15 @@
 
 ## HTML - Source Code
 
-Look in the source code of the HTML page and you will see the password. What's interesting is that if you don't use the inspector, the password will be tabbed so far right that you might miss it if you don't scroll sideways.
-<br>
+Look in the source code of the HTML page and you will see the password. 
+
 <img src="images/ch1-1.png">
-<br>
+
+What's interesting is that if you don't use the inspector, the password will be tabbed so far right that you might miss it if you don't scroll sideways.
+
 <img src="images/ch1-2.png">
 
 The password to complete the level is `nZ^&@q5&sjJHev0y`
-<br>
 
 ## Weak password
 
@@ -24,7 +25,10 @@ The password to complete the level is `admin`
 For this challenge you need to request the web page with the `user-agent` string being `admin`. 
 <img src="images/ch2-1.png">
 
-You can do this using the following curl command: `curl --user-agent "admin" http://challenge1.root-me.org/web-serveur/ch2/`
+You can do this using the following curl command: 
+```shell
+curl --user-agent "admin" http://challenge1.root-me.org/web-serveur/ch2/
+```
 <img src="images/ch2-2.png">
 
 The password to complete the level is `rr$Li9%L34qd1AAe27`
@@ -58,3 +62,18 @@ Knowing this, just navigate to `/index.php~`, and download the file. There, you 
 <img src="images/ch11-2.png">
 
 The password to complete the level is `0CCY9AcNm1tj`
+
+## PHP - Command injection
+
+The first thing we see is a text field that accepts IP addresses, pings them, and returns the output as if it was a shell command. 
+
+<img src="images/ch54-1.png">
+
+Seeing the output look like it came from a unix shell, trying to put commands such as `ls` sounds like a good idea, but there seems to be some sanitization. To get around this, you can put in an IP address, along with another command using the `&` symbol. In the description of the challenge, it says the flag is in the `index.php` file, but if you look at the source code of the page, there's nothing there. Assuming that file is on the compromised service, we can inject a command to cat the file, and grep for the flag. The command I used was:
+```shell
+127.0.0.1 & cat index.php | grep flag
+```
+
+<img src="images/ch54-2.png">
+
+The password to complete the level is `S3rv1ceP1n9Sup3rS3cure`
