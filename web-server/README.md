@@ -104,7 +104,11 @@ When visiting the web page for this challenge, we are asked for credentials.
 
 <img src="images/ch8-1.png">
 
-However, the intended solution for this challenge is not to manipulate input sanitization, but to tamper with different HTTP methods, called [verb tampering](https://wiki.owasp.org/index.php/Testing_for_HTTP_Verb_Tampering_(OTG-INPVAL-003)). We can use curl commands to request the web page with different verbs, and find the password.
+However, the intended solution for this challenge is not to manipulate input sanitization, but to tamper with different HTTP methods, called [verb tampering](https://wiki.owasp.org/index.php/Testing_for_HTTP_Verb_Tampering_(OTG-INPVAL-003)). We can use curl commands to request the web page with different verbs, and find the password. We can use this curl command to get the password (other verbs also yield the same result).
+
+```shell
+curl --request PUT http://challenge01.root-me.org/web-serveur/ch8/
+```
 	
 <img src="images/ch8-2.png">
 
