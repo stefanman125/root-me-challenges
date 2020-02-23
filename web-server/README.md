@@ -77,3 +77,21 @@ Seeing the output look like it came from a unix shell, trying to put commands su
 <img src="images/ch54-2.png">
 
 The password to complete the level is `S3rv1ceP1n9Sup3rS3cure`
+
+## HTTP - Headers
+
+From the challenge name, we assume that it has something to do with the headers. To get the headers of the web page, we can use a curl command:
+
+```shell
+curl --head http://challenge01.root-me.org/web-serveur/ch5/
+```
+
+<img src="images/ch5-1.png">
+
+Now we know what the headers are, we can change them using the curl command:
+
+```shell
+curl --include --header "Header-RootMe-Admin: Administrator" http://challenge01.root-me.org/web-serveur/ch5/
+```
+
+<img src="images/ch5-2.png">
