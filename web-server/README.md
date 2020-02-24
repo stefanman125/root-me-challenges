@@ -150,6 +150,33 @@ However, this is NOT the password for the challenge. Instead of user1, we need t
 
 The password to complete the level is `t0_W34k!$`
 
+## HTTP - Improper redirect 
+
+We start the challenge with a login portal that says we're not authenticated and can't view this page (take note of the URI). 
+
+<img src="images/ch32-1.png">
+
+If you change the URI to contain `index.php`, it will quickly go to that page, and redirect back to the one we started at. You can use burp suite, ZAP proxy, or cult to capture the request. I used the curl command:
+
+```shell
+curl "http://challenge01.root-me.org/web-serveur/ch32/index.php"
+```
+
+<img src="images/ch32-2.png">
+
+If you want to do the challenge properly, you can use burp suite or any other program that intercepts server responses. 
+When in burp suite, go the `proxy` tab, and then `options` tab, and enable `Intercept Server Responses` (this is off by default). 
+
+<img src="images/ch32-3.png">
+
+Then, turn on intercept and request the same webpage as we did in the curl command above. Forward the requests until you get a response, it should be an `HTTP 302 Found` response. Change the code to `200 OK` and forward the response to your browser, you should get a web page with the flag.
+
+<img src="images/ch32-4.png">
+
+<img src="images/ch32-5.png">
+
+The password to complete the level is `ExecutionAfterRedirectIsBad`
+
 ## HTTP - POST
 
 With this challenge, we are greeted with a fun little game that generates a random number every time you click the button. 
