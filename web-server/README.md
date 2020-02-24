@@ -122,6 +122,18 @@ We start with a blank and empty HTML page. Looking at the description of the cha
 
 The password to complete the level is `karambar`
 
+## HTTP - Cookies
+
+We start the challenge with a text box and a button that shows emails. When we click the button, the web page tells us that we need to be admin to see the saved emails. If you look at the URI, we can see that there is a parameter probably specifying what type of user we are.
+
+<img src="images/ch7-1.png">
+
+If we change the default value to `admin` and click the button to see the saved logins once again, the web page tells us that the cookie is incorrect. Go into your browsers cookie settings and change the value of the only cookie to `admin`. Refresh the page and you'll get the password.
+
+<img src="images/ch7-2.png"> 
+
+The password to complete the level is `ml-SYMPA`
+
 ## HTTP - POST
 
 With this challenge, we are greeted with a fun little game that generates a random number every time you click the button. 
