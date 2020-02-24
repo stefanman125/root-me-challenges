@@ -114,6 +114,14 @@ curl --request PUT http://challenge01.root-me.org/web-serveur/ch8/
 
 The password to complete the level is `a23e$dme96d3saez$$prap`
 
+## Install files
+
+We start with a blank and empty HTML page. Looking at the description of the challenge hints at the use of the `phpbb` software. Looking at the [documentation](https://www.phpbb.com/support/docs/) of the software, we see that an install file is in the directory `phpbb/install/install.php`. Go to this directory and you will get the password.
+
+<img src="images/ch6-1.png">
+
+The password to complete the level is `karambar`
+
 ## HTTP - POST
 
 With this challenge, we are greeted with a fun little game that generates a random number every time you click the button. 
