@@ -1,4 +1,4 @@
-# Web-Server Challenges
+Web-Server Challenges
 
 ## HTML - Source Code
 
@@ -133,6 +133,22 @@ If we change the default value to `admin` and click the button to see the saved 
 <img src="images/ch7-2.png"> 
 
 The password to complete the level is `ml-SYMPA`
+
+## SQL injection - Authentication
+
+We start the challenge with an authentication portal, and as the title of the challenge suggests, we need to use SQL injection.
+
+<img src="images/ch9-1.png">
+
+If you try a basic SQL injection payload, such as `username=admin&password=' or 1=1 --`, user1 will be returned with the password hidden with the `password` HTML tag (you can change the tag in the source code to reveal the hidden text, or copy it directly from the source). 
+
+<img src="images/ch9-2.png">
+
+However, this is NOT the password for the challenge. Instead of user1, we need to get the password for the administrator, as was said in the description of the challenge. After some trial and error, the SQL payload that worked and returned the administrator credentials was: `username:admin' or '1=1&password=admin`.
+
+<img src="images/ch9-3.png">
+
+The password to complete the level is `t0_W34k!$`
 
 ## HTTP - POST
 
