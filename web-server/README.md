@@ -109,3 +109,23 @@ However, the intended solution for this challenge is not to manipulate input san
 <img src="images/ch8-2.png">
 
 The password to complete the level is `a23e$dme96d3saez$$prap`
+
+## HTTP - POST
+
+With this challenge, we are greeted with a fun little game that generates a random number every time you click the button. 
+
+<img src="images/ch56-1.png">
+
+After seeing the source code, we see that the button sends a POST request with two values: `generate` and `score`. 
+
+<img src="images/ch56-2.png">
+
+We can use CURL to send a POST request with a score over `999999` (If you send a POST request with just a `score` parameter, it won't work, make sure to include the `generate` value as well). We can use the CURL command: 
+
+```shell
+curl --request POST --form 'generate=Give+a+try%21' --form 'score=1000000' http://challenge01.root-me.org/web-serveur/ch56/
+```
+
+<img src="images/ch56-3.png">
+
+THe password to complete the level is `H7tp_h4s_N0_s3Cr37S_F0r_y0U`
