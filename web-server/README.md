@@ -199,17 +199,13 @@ The password to complete the level is `H7tp_h4s_N0_s3Cr37S_F0r_y0U`
 
 ## Directory traversal
 
-The first thing to notice is the `connected as` part of the web page on the very right, telling us that we're logged in as `guest`, and that we might need to escalate privileges (check the cookies to make yourself admin). 
+First thing we notices is a photo gallery with tabs showing icons. Clicking on any of the tabs, we see that the URI shows us our path in the gallery.  
 
 <img src="images/ch15-1.png">
 
-Clicking on any of the tabs that the photo gallery offers, we see that the URI shows us our path in the gallery.  
-
-<img src="images/ch15-2.png">
-
 One thing we can do is remove the value for the parameter `galerie`, which makes all the images missing. However, upon taking a closer look (check the source code), we see that there is a hidden folder named `86hwnX2r`. Add that value to `galerie` in the URI.
 
-<img src="images/ch15-3.png">
+<img src="images/ch15-2.png">
 
 You will end up in a directory with an image named `password.txt`, right click on this image and click `view image`, it will contain the password.
 
