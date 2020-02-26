@@ -210,3 +210,25 @@ One thing we can do is remove the value for the parameter `galerie`, which makes
 You will end up in a directory with an image named `password.txt`, right click on this image and click `view image`, it will contain the password.
 
 The password to complete the level is `kcb$!Bx@v4Gs9Ez`
+
+## File upload - Double extension
+
+Similar to the Directory Traversal challenge, we have a photo gallery, but this time with the addition of an `upload file` tab. Reading the description of the challenge, we have to upload a file containing php code that will show us the `.passwd` file. A simple php payload would look something like this:
+
+```php
+<?php
+
+system ($_GET['cmd']);
+
+?>
+```
+
+This payload will execute any shell commands you give it via the URI once uploaded. Put this payload in a file, and make sure to include `.php` in the filename, along with the extension being one of the allowed ones (.gif, .png, pr .jpeg). This will trick the application into parsing the file, and will still run as a php file. 
+
+<img src="images/ch20-1.png">
+
+Upload the file, open it, and append your command at the end of the URI. After searching, you should be able to find the `.passwd` file containing the password. 
+
+<img src="images/ch20-2.png">
+
+The password to complete the level is: `Gg9LRz-hWSxqqUKd77-_q-6G8`
