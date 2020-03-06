@@ -13,3 +13,5 @@ done
 ```
 
 <img src="images/ch8-1.png">
+
+The password to complete the level is: `2ac376481ae546cd689d5b91275d324e`
