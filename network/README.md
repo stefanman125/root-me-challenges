@@ -27,3 +27,11 @@ Decode this base64 encoded string and you will get the password.
 <img src="images/ch3-2.png">
 
 The password to complete the level is `password`
+
+## ETHERNET - frame
+
+This challenge gives you a hexdump of what is a supposed to be an ethernet frame. Convert this hexdump into ASCII, and repeat the steps from the previous challenge.
+
+<img src="images/ch12-1.png">
+
+The password to complete the level is `confi:dential`
