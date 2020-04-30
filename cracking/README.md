@@ -59,3 +59,43 @@ Using these values, we get the flag.
 <img src="images/ch2-8.png">
 
 The password to complete the level is `987654321`
+
+## PE x86 - 0 Protection
+
+We are given a PE32 executable file this time, so we'll have to use Windows to run it. Running it in a CMD prompt, the binary asks us for a password. 
+
+<img src="images/ch15-1.png">
+
+First, we can look through the strings of the binary to give us any hints, you can do this by running the command `strings`. If we scroll down a bit, we can see the string that asks us for our password. However, we can also see a string that is presumably displayed when entering the correct password. 
+
+<img src="images/ch15-2.png">
+
+We can begin analyzing this by looking for that string. In my case, I used [Ida Pro](https://www.hex-rays.com/products/ida/) to disassemble the binary and search for the string. 
+
+To search for strings, press Alt+T (If you don't find it the first time, try checking the "Search Up" box and then search again).
+
+<img src="images/ch15-3.png">
+
+Searching for this string brings us to the function that checks our input to see if we entered the password. 
+
+<img src="images/ch15-4.png">
+
+Starting from the top of the function, we can see that it first checks to see if what we have entered is equal to 7 bytes. 
+
+```assembly_x86
+cmp    [ebp+arg_4], 7
+```
+
+After that, there are seven separate checks that compare each byte of our input to the respective hexadecimal byte. Here is the first example that compares the first byte of our input to the hex value `0x53`.
+
+<img src="images/ch15-5.png">
+
+To see what input the binary is looking for in order to meet all the conditions that end up printing the "Gratz man :)" string, we need to take all of the seven hex values, and convert them to ASCII.
+
+<img src="images/ch15-6.png">
+
+Just to make sure, we can provide this input when running the binary.
+
+<img src="images/ch15-7.png">
+
+The password to complete the level is `SPaCIoS`
