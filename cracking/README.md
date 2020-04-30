@@ -90,7 +90,7 @@ After that, there are seven separate checks that compare each byte of our input 
 
 <img src="images/ch15-5.png">
 
-To see what input the binary is looking for in order to meet all the conditions that end up printing the "Gratz man :)" string, we need to take all of the seven hex values, and convert them to ASCII.
+To see what input the binary is looking for in order to meet all the conditions that end up printing the `Gratz man :)` string, we need to take all of the seven hex values, and convert them to ASCII.
 
 <img src="images/ch15-6.png">
 
@@ -99,3 +99,25 @@ Just to make sure, we can provide this input when running the binary.
 <img src="images/ch15-7.png">
 
 The password to complete the level is `SPaCIoS`
+
+## PE DotNet - 0 Protection
+
+We are given a PE32 DotNet executable. If we run it in Windows, we get a GUI that asks us for a password. Upon entering a bad password, it gives us a pop-up error message.
+
+<img src="images/ch22-1.png">
+
+To decompile/disassemble DotNet compiled binaries, [dotPeek by JetBrains](https://www.jetbrains.com/decompiler/) is free and can be used. Run the program and import the binary.
+
+Once imported, a good place to start looking for the password would be to see where the form the GUI button is defined, as it may trigger a function that checks and compares our input to the password.  
+
+<img src="images/ch22-2.png">
+
+Double-clicking on this object, we see see a function `Button1_Click`, with the string thats returned when our bad input was given, and also presumabely the text that will be returned when we provide the right input. 
+
+<img src="images/ch22-3.png">
+
+If we look at the if statement, we see that the `Operators.CompareString` function is being called with `TextBox1.Text` and `DotNetOP` as arguments. [The function](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualbasic.compilerservices.operators.comparestring?view=netcore-3.1) returns 0 if both values are equal, meaning the if the input we enter is `DotNetOP`, the congratulatory text will display. We can test this by entering that string into the text box. 
+
+<img src="images/ch22-4.png">
+
+The password to complete the level is `DotNetOP`
