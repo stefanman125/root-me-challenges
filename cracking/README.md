@@ -121,3 +121,19 @@ If we look at the if statement, we see that the `Operators.CompareString` functi
 <img src="images/ch22-4.png">
 
 The password to complete the level is `DotNetOP`
+
+## ELF x86 - Fake Instructions
+
+We are given an ELF 32-bit binary. Running the binary with a random password, we get an error message telling us that the way of wisdom will guide us, and that we should find the password. 
+
+<img src="images/ch4-1.png">
+
+Running `ltrace` on this binary, wee see the string our input is compared to, so naturally we use this string as our input. 
+
+<img src="images/ch4-2.png">
+
+However, when we use this input, it doesn't work. If we focus on the `strcmp` call, we see that our input is sanitized, as extra escape characters are added, as well as the string being truncated to not include the last four bytes. 
+
+<img src="images/ch4-3.png">
+
+To solve this, we can use [OllyDbg](http://www.ollydbg.de/) to dynamically analyze this binary, and change memory values at certain points during the run time. 

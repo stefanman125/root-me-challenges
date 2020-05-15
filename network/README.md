@@ -35,3 +35,15 @@ This challenge gives you a hexdump of what is a supposed to be an ethernet frame
 <img src="images/ch12-1.png">
 
 The password to complete the level is `confi:dential`
+
+## IP - Time To Live
+
+In this challenge, we are given a `pcap` file to analyze, and look for the TTL used to reach the target in the ICMP packet exchange. Open this file in [Wireshark](https://www.wireshark.org/), and scroll all the way down until you start to see the "Time-to-live exceeded" messages disappearing. 
+
+What we are seeing here is the ICMP request packets gradually increasing their TTL by 1 each time the "Time-to-live exceeded" message arrives. Eventually, the TTL will be high enough that it will reach its destination without dying.
+
+ You should arrive at packet 71. Select the packet, and expand the IPv4 window near the bottom. The TTL is going to be the flag. 
+
+<img src="images/IPTimeToLive-1.png">
+
+The password to complete the level is `13`
