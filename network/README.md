@@ -47,3 +47,15 @@ What we are seeing here is the ICMP request packets gradually increasing their T
 <img src="images/IPTimeToLive-1.png">
 
 The password to complete the level is `13`
+
+## DNS - Zone Transfer
+
+In this challenge, we have to perform a DNS zone transfer to `ch11.challenge01.root-me.org`. We are given the host DNS server and port. Using `dig`, we can perform this transfer and request a `TXT` record.
+
+```shell
+dig @challenge01.root-me.org -p 54011 ch11.challenge01.root-me.org txt
+```
+
+<img src="images/DNSZoneTransfer-1.png">
+
+The password to complete the level is `CBkFRwfNMMtRjHY`
