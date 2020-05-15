@@ -59,3 +59,17 @@ dig @challenge01.root-me.org -p 54011 ch11.challenge01.root-me.org txt
 <img src="images/DNSZoneTransfer-1.png">
 
 The password to complete the level is `CBkFRwfNMMtRjHY`
+
+## Bluetooth - Unknown File
+
+In this challenge, we are given a "BTSnoop" file with the goal of finding the MAC address and name of a phone communicating in a Bluetooth session. 
+
+This special file can be opened in [Wireshark](https://www.wireshark.org/). Once opened, go to packet 9, where a name request is fulfilled. Looking into the Bluetooth HCI Event header, we can see the MAC address and the name of the Phone.
+
+<img src="images/BluetoothUnknownFile-1.png">
+
+Pipe the MAC address and Name into `sha1sum` to get the sha1 hash.
+
+<img src="images/BluetoothUnknownFile-2.png">
+
+The password to complete the level is `c1d0349c153ed96fe2fadf44e880aef9e69c122b`
