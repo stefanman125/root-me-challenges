@@ -156,7 +156,7 @@ We start the challenge with a login portal that says we're not authenticated and
 
 <img src="images/ch32-1.png">
 
-If you change the URI to contain `index.php`, it will quickly go to that page, and redirect back to the one we started at. You can use burp suite, ZAP proxy, or cult to capture the request. I used the curl command:
+If you change the URI to contain `index.php`, it will quickly go to that page, and redirect back to the one we started at. You can use burp suite, ZAP proxy, or curl to capture the request. I used the curl command:
 
 ```shell
 curl "http://challenge01.root-me.org/web-serveur/ch32/index.php"
